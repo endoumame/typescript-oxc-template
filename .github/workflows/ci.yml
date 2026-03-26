@@ -48,7 +48,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build dependencies
-        run: pnpm --filter @web-clipper/shared --filter @web-clipper/api build
+        run: pnpm --filter @my-app/shared --filter @my-app/api build
 
       - run: pnpm typecheck
 
@@ -68,36 +68,3 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - run: pnpm test
-
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: [lint, typecheck, test]
-    environment: production
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-
-      - run: pnpm install --frozen-lockfile
-
-      - name: Build dependencies
-        run: pnpm --filter @web-clipper/shared --filter @web-clipper/api build
-
-      - name: Deploy API
-        run: pnpm --filter @web-clipper/api exec wrangler deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-      - name: Build & Deploy Web
-        run: |
-          pnpm build:web
-          pnpm --filter @web-clipper/web exec wrangler deploy
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

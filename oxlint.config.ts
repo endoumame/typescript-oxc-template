@@ -26,7 +26,7 @@ export default defineConfig({
       },
     },
     {
-      files: ["**/*.config.ts", "**/*.config.js", "**/worker.ts"],
+      files: ["**/*.config.ts", "**/*.config.js", "**/worker.ts", "**/src/index.ts"],
       rules: {
         "import/no-default-export": "off",
       },

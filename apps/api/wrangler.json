@@ -1,18 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "web-clipper-api",
+  "name": "my-app-api",
   "main": "src/index.ts",
   "compatibility_date": "2025-12-01",
-  "compatibility_flags": ["nodejs_compat"],
-  "ai": {
-    "binding": "AI"
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "web-clipper-db",
-      "database_id": "96f37eb1-5580-4214-a619-591f4aa2510d",
-      "migrations_dir": "drizzle"
-    }
-  ]
+  "compatibility_flags": ["nodejs_compat"]
 }
