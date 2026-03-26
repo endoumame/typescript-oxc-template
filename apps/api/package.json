@@ -1,5 +1,5 @@
 {
-  "name": "@web-clipper/api",
+  "name": "@my-app/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -12,29 +12,14 @@
     "dev": "wrangler dev",
     "build": "tsc --emitDeclarationOnly && wrangler deploy --dry-run --outdir=dist",
     "test": "vitest run --passWithNoTests",
-    "typecheck": "tsc --noEmit",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/zod-openapi": "^1.2.3",
-    "@mozilla/readability": "^0.6.0",
-    "@scalar/hono-api-reference": "^0.10.5",
-    "@web-clipper/shared": "workspace:*",
-    "drizzle-orm": "^0.45.1",
-    "hono": "^4.12.9",
-    "linkedom": "^0.18.12",
-    "nanoid": "^5.1.7",
-    "neverthrow": "^8.2.0",
-    "turndown": "^7.2.2",
-    "zod": "^4.3.6"
+    "hono": "^4.12.9"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.13.4",
     "@cloudflare/workers-types": "^4.20260317.1",
-    "@types/turndown": "^5.0.6",
-    "drizzle-kit": "^0.31.10",
     "typescript": "^6.0.2",
     "vitest": "~4.1.1",
     "wrangler": "^4.77.0"

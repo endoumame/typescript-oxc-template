@@ -6,7 +6,7 @@
     "jsx": "preserve",
     "paths": {
       "@/*": ["./src/*"],
-      "@web-clipper/api": ["../api/dist/index.d.ts"]
+      "@my-app/api": ["../api/dist/index.d.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.vue", "env.d.ts"],

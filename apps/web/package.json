@@ -1,5 +1,5 @@
 {
-  "name": "@web-clipper/web",
+  "name": "@my-app/web",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@web-clipper/api": "workspace:*",
+    "@my-app/api": "workspace:*",
     "hono": "^4.12.9",
     "vue": "^3.5.31",
     "vue-router": "^5.0.4"
