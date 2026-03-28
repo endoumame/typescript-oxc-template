@@ -1,6 +1,9 @@
 pre-commit:
   parallel: true
   jobs:
+    - name: secretlint
+      run: pnpm secretlint
+
     - name: oxlint
       run: pnpm lint
 

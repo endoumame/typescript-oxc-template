@@ -15,13 +15,16 @@
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
     "lint": "oxlint --type-aware .",
-    "lint:fix": "oxlint --type-aware --fix ."
+    "lint:fix": "oxlint --type-aware --fix .",
+    "secretlint": "secretlint \"**/*\""
   },
   "devDependencies": {
+    "@secretlint/secretlint-rule-preset-recommend": "^11.4.0",
     "lefthook": "^2.1.4",
     "oxfmt": "^0.42.0",
     "oxlint": "^1.57.0",
-    "oxlint-tsgolint": "0.17.4"
+    "oxlint-tsgolint": "0.17.4",
+    "secretlint": "^11.4.0"
   },
   "packageManager": "pnpm@10.30.0",
   "pnpm": {
