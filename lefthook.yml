@@ -13,5 +13,8 @@ pre-commit:
     - name: test
       run: pnpm test
 
+    - name: textlint
+      run: pnpm textlint "**/*.md"
+
     - name: typecheck
       run: pnpm typecheck

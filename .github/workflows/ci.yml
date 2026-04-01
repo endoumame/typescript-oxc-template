@@ -32,6 +32,9 @@ jobs:
       - name: oxlint
         run: pnpm lint
 
+      - name: textlint
+        run: pnpm textlint "**/*.md"
+
       - name: oxfmt
         run: pnpm format:check
 
