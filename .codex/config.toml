@@ -1,0 +1,17 @@
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+web_search = "live"
+personality = "pragmatic"
+model_auto_compact_token_limit = 400000
+
+[sandbox_workspace_write]
+network_access = true
+
+[analytics]
+enabled = false
+
+[tui]
+status_line = ["current-dir", "git-branch"]
+# Hooks are configured in .codex/hooks.json (mirrors .claude/hooks/*).
