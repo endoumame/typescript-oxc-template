@@ -1,0 +1,10 @@
+{
+  "packages": [
+    {
+      "name": "vendor/c",
+      "version": "1.2.3",
+      "require": { "php": ">=8.0 <8.4" },
+      "source": { "url": "https://github.com/vendor/c.git", "reference": "ccc" }
+    }
+  ]
+}

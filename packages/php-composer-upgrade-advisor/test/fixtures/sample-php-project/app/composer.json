@@ -1,0 +1,10 @@
+{
+  "require": {
+    "php": "^8.1",
+    "vendor/a": "^1.0",
+    "vendor/b": "^2.0"
+  },
+  "require-dev": {
+    "vendor/dev": "^1.0"
+  }
+}
