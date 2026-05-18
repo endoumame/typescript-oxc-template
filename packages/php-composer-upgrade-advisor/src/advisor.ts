@@ -67,19 +67,22 @@ export interface AnalyzeOptions {
 
 export async function analyzePhpComposerUpgrade(options: AnalyzeOptions): Promise<UpgradeReport> {
   const projects = await discoverComposerProjects(options.rootDirectory);
-  const projectReports = await Promise.all(
-    projects.map(async (project) => ({
+  const projectReports = [];
+  for (const project of projects) {
+    const packages = [];
+    for (const pkg of project.lockedPackages.filter(
+      (item) => options.includeDev === true || !item.dev,
+    )) {
+      packages.push(await analyzePackage(pkg, project.rootName, options));
+    }
+    projectReports.push({
       composerJsonPath: project.composerJsonPath,
       directory: project.directory,
       lockPath: project.lockPath,
-      packages: await Promise.all(
-        project.lockedPackages
-          .filter((pkg) => options.includeDev === true || !pkg.dev)
-          .map(async (pkg) => analyzePackage(pkg, project.rootName, options)),
-      ),
+      packages,
       rootName: project.rootName,
-    })),
-  );
+    });
+  }
   return {
     generatedAt: new Date().toISOString(),
     input: {

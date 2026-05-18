@@ -13,9 +13,11 @@ The implementation is evidence-oriented:
 6. It selects the lowest stable version at or above the locked version.
 7. The selected version must allow the target PHP minor through `require.php`.
 8. It infers GitHub repositories from package source metadata when possible.
-9. It inspects releases and repository documentation files.
-10. It also inspects GitHub Actions workflows.
-11. It emits confidence scores and per-package evidence.
+9. It uses GitHub GraphQL for release and repository file inspection.
+10. It retries 429 responses with bounded wait time.
+11. It inspects releases and repository documentation files.
+12. It also inspects GitHub Actions workflows.
+13. It emits confidence scores and per-package evidence.
 
 Package status values are:
 
@@ -44,7 +46,7 @@ Options:
 - `--output <file>`: write the report to a file instead of stdout.
 - `--include-dev`: include `packages-dev` from lock files.
 - `--no-github`: skip GitHub release, changelog, and workflow inspection.
-- `--github-token <token>`: GitHub API token. Defaults to `GITHUB_TOKEN`.
+- `--github-token <token>`: GitHub GraphQL API token. Defaults to `GITHUB_TOKEN`.
 
 ## Determinism model
 
@@ -52,6 +54,9 @@ Packagist `require.php` metadata is the strongest signal.
 It is the same metadata Composer uses for dependency solving.
 GitHub release, changelog, and CI workflow mentions are supporting evidence.
 They improve explainability, but do not override Packagist constraints.
+GitHub evidence uses the GraphQL API to reduce request count.
+Use `--github-token` or `GITHUB_TOKEN` for GraphQL inspection.
+Use `--no-github` when a token is unavailable.
 
 The tool does not rewrite `composer.json` or `composer.lock`.
 Use its output as an evidence-backed upgrade plan.

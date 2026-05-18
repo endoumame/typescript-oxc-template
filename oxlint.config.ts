@@ -38,6 +38,7 @@ export default defineConfig({
         "import/group-exports": "off",
         "import/no-nodejs-modules": "off",
         "init-declarations": "off",
+        "max-lines": "off",
         "max-lines-per-function": "off",
         "max-params": "off",
         "max-statements": "off",
